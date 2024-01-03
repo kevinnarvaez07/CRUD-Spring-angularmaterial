@@ -1,0 +1,56 @@
+mat-card{
+    width: 95%;
+    margin: auto;
+}
+.header-table{
+    color: white;                   /* nombre fila tabla*/
+    background-color:#1C2833 ;
+}
+
+
+.container-btn {
+    display: flex;
+    flex-direction: row;                /*contenedor de filtro*/
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.mat-mdc-form-field {
+    font-size: 17px;
+    width: 25%;                 /*filtro*/
+    margin-right: 5%;
+  }
+
+.btn-agregar{
+    height: 40px;               /*boton agregar*/
+     font-size: 15px;
+     margin-left: 50px;
+     margin-bottom: 10px;
+ }
+
+
+.btnEdit, .btnDelete{
+    cursor: pointer;
+}
+.btnDelete{
+    font-size: 27px;
+    color: rgb(187, 33, 33);  /*eliminar*/
+
+}
+.btnEdit{
+    font-size: 26px;
+    color: rgb(19, 130, 235);  /* boton lapiz*/
+    margin-right: 10px;
+}
+
+.person_add{
+    font-size: 18px;                    /*icon add*/
+
+}
+
+.paginator{
+    border-top: 1px solid rgb(218, 213, 213);
+}
+    
+
+ 

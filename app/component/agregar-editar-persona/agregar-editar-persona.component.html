@@ -1,0 +1,68 @@
+<div class="container">
+<h2 mat-dialog-title>{{ operacion }} Usuario</h2>
+<mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+</div>
+<form [formGroup]="form" (ngSubmit)="addEditPersona()">
+  <mat-dialog-content>
+  
+    <!-- nombre -->
+      <mat-form-field appearance="fill">
+          <mat-label>Nombre y apellidos</mat-label>
+          <input formControlName="nombre" matInput placeholder="Nombre y apellido">
+      </mat-form-field>
+  
+  <!-- tipo de documento -->
+      <mat-form-field>
+          <mat-label>Tipo de documento</mat-label>
+          <mat-select formControlName="tipoDoc">
+            <mat-option value="Cedula">Cédula</mat-option>
+            <mat-option value="Tarjeta Identidad">Tarjeta Identidad</mat-option>
+            <mat-option value="Cedula extranjera">Cedula extranjera </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <!-- identificacion -->
+        <mat-form-field appearance="fill">
+        <mat-label>Identificación</mat-label>
+          <input formControlName="identificacion" matInput placeholder="Identificación">
+      </mat-form-field>
+      
+      <!-- Telefono -->
+        <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+          <input formControlName="telefono" matInput placeholder="Telefono">
+      </mat-form-field>
+  
+        <!-- Correo Electrónico -->
+        <mat-form-field appearance="fill">
+        <mat-label>Correo Electrónico</mat-label>
+          <input formControlName="email" matInput placeholder="Correo Electrónico">
+      </mat-form-field>
+  
+      <!-- solicitud mensaje radios -->
+      <label>Solictud mensaje</label>
+      <br>
+      <mat-radio-group formControlName="solicitud" aria-label="Select an option">
+        <mat-radio-button value="Queja">Queja</mat-radio-button>
+        <mat-radio-button value="Felicitaciones">Felicitaciones</mat-radio-button>
+        <mat-radio-button value="Reclamo">Reclamo</mat-radio-button>
+      </mat-radio-group>
+  
+      <!-- terminos de politica -->
+  
+    
+      <p>
+        <mat-checkbox 
+        formControlName="terminos">Acepto terminos y condiciones
+        </mat-checkbox>
+      </p>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button type="button" color="warn" mat-button (click)="cancelar()">Cancelar</button>
+    <button type="submit" mat-button cdkFocusInitial>Aceptar</button>
+  </mat-dialog-actions>
+</form>
+
+<!-- *ngIf="!data.id else elseBlock"  -->
+

@@ -1,0 +1,85 @@
+<mat-toolbar style="margin-bottom: 10px;">
+    <span>Listado de usuarios</span>
+</mat-toolbar>
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div class="container-btn">
+    <button mat-raised-button  
+      class="btn-agregar" 
+      color = "accent"
+      (click)="addEditPersona()">Agregar 
+      <mat-icon>
+        <span class="person_add">person_add</span>
+      </mat-icon> 
+    </button>
+
+  <mat-form-field appearance="outline" >
+    <mat-label>Buscar</mat-label>
+      <input matInput   (keyup)="applyFilter($event)" #input autocomplete="off">
+  </mat-form-field>
+</div>
+
+  <mat-card>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z2">
+
+
+        <!-- Position id -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+         <!-- Position Nombre -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- Tipo de documento  Position -->
+        <ng-container matColumnDef="tipoDoc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header=""> Tipo de documento </th>
+          <td mat-cell *matCellDef="let element"> {{element.tipoDoc}} </td>
+        </ng-container>
+
+        <!-- identificacion Position  -->
+        <ng-container matColumnDef="identificacion">
+          <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+          <td mat-cell *matCellDef="let element"> {{element.identificacion}} </td>
+        </ng-container>
+
+        <!-- telefono Position  -->
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef> Telefono </th>
+          <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+        </ng-container>
+      
+        <!-- email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+          <!-- solicitud Column -->
+        <ng-container matColumnDef="solicitud">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Solicitud </th>
+            <td mat-cell *matCellDef="let element"> {{element.solicitud}} </td>
+          </ng-container>
+
+           <!-- acciones Column -->
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef></th> 
+              <td mat-cell *matCellDef="let element" > 
+                <mat-icon (click)="addEditPersona(element.id)"  matTooltip="Editar" class="btnEdit">edit</mat-icon>
+                 <mat-icon (click)="deletePersona(element.id)"  matTooltip="Eliminar" class="btnDelete">delete</mat-icon>
+            </td>
+          </ng-container>
+        
+
+          <!-- columnas de nombres -->
+        <tr mat-header-row class="header-table" *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+      <!-- paginator -->
+      <mat-paginator class="mat-elevation-z0 paginator" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="element"></mat-paginator>
+      
+  </mat-card>
+  
